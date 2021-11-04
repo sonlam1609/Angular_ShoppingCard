@@ -1,0 +1,19 @@
+<div class="row">
+
+  <div class="col-3" *ngFor="let item of products">
+    <div class="card d-flex justify-center">
+      <img [routerLink]="['/form-product-update',item.id]" class="card-img-top p-3" [src]="item.image" alt="Card image" style="width:100%">
+      <div class="card-body">
+        <h5 class="card-title border-bottom text-center pb-2">{{item.productName}}</h5>
+        <p class="pb-2 card-text border-bottom text-center" *ngIf="item.promotionPrice > 0">
+          {{item.price - item.price*(item.promotionPrice)/100}}
+        </p>
+        <p class="card-text border-bottom text-center pb-2" style="text-decoration: line-through">{{item.price}}</p>
+        <div class="text-center">
+          <a (click)="addCard(item)" class="btn btn-outline-primary w-100 pb-2">Add to card</a>
+          <a (click)="deleteProduct(item.id)" class="btn btn-outline-danger w-100 pb-2">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
